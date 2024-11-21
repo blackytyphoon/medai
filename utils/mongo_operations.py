@@ -3,7 +3,8 @@ import hashlib
 
 class MongoDBOperations:
     def __init__(self, uri):
-        self.client = pymongo.MongoClient(uri,serverSelectionTimeoutMS=5000)
+        self.client = pymongo.MongoClient(uri,socketTimeoutMS=30000, 
+                             connectTimeoutMS=30000)
         self.db = self.client["med_ai_database"]
         self.collection = self.db["users"]
 
